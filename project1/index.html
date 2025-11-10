@@ -6,7 +6,7 @@
     <title>21-days-project-1</title>
     <link rel="stylesheet" href="style.css" />
 
-    <!-- link for font awesome and poppins -->
+    <!-- font awesome and poppins -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -20,14 +20,14 @@
     <!-- header start -->
     <header role="banner">
       <div class="container">
-        <nav role="navigation" aria-label="main navigation">
+        <nav role="navigation" aria-label="Main navigation">
           <h1>BeyondBorders</h1>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#destinations">Destinations</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#booking">Book Now</a></li>
+            <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+            <li><a href="#destinations" aria-label="View popular destinations">Destinations</a></li>
+            <li><a href="#packages" aria-label="View travel packages">Packages</a></li>
+            <li><a href="#testimonials" aria-label="Read testimonials">Testimonials</a></li>
+            <li><a href="#booking" aria-label="Book your travel">Book Now</a></li>
           </ul>
         </nav>
       </div>
@@ -35,7 +35,7 @@
     <!-- header end -->
 
     <!-- hero section -->
-    <section id="home" role="region" aria-label="home section">
+    <section id="home" role="region" aria-label="Home section">
       <video
         class="bg-video"
         src="https://www.pexels.com/download/video/3015510/"
@@ -43,50 +43,54 @@
         loop
         muted
         playsinline
+        aria-hidden="true"
       ></video>
-      <div class="overlay"></div>
+      <div class="overlay" aria-hidden="true"></div>
       <div class="home-content container">
         <h2>Discover Your Next Adventure</h2>
         <p>
           Explore breathtaking destinations around the world and create memories
           that last a lifetime.
         </p>
-        <a href="#packages" class="btn" aria-label="Packages">
+        <a href="#packages" class="btn" aria-label="Explore travel packages">
           Explore Packages
         </a>
       </div>
     </section>
 
     <!-- destinations -->
-    <section id="destinations" class="section">
+    <section id="destinations" role="region" aria-labelledby="dest-heading">
       <div class="container">
-        <h2>Popular Destinations</h2>
+        <h2 id="dest-heading">Popular Destinations</h2>
         <div class="destinations-grid">
-          <article class="destinations-card">
+          <article class="destinations-card" aria-label="Destination: Paris, France">
             <img
               src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80"
-              alt="Paris"
+              alt="Paris cityscape with Eiffel Tower"
             />
             <h3>Paris, France</h3>
           </article>
-          <article class="destinations-card">
+
+          <article class="destinations-card" aria-label="Destination: Maldives">
             <img
               src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-              alt="Maldives"
+              alt="Maldives tropical beach"
             />
             <h3>Maldives</h3>
           </article>
-          <article class="destinations-card">
+
+          <article class="destinations-card" aria-label="Destination: New York, USA">
             <img
               src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80"
-              alt="New York"
+              alt="New York skyline with skyscrapers"
             />
             <h3>New York, USA</h3>
           </article>
-          <article class="destinations-card">
+
+          <article class="destinations-card" aria-label="Destination: Bali, Indonesia">
             <img
               src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80"
-              alt="Bali"
+              alt="Bali beach sunset view"
             />
             <h3>Bali, Indonesia</h3>
           </article>
@@ -95,76 +99,76 @@
     </section>
 
     <!-- packages -->
-    <section id="packages" class="section">
+    <section id="packages" role="region" aria-labelledby="packages-heading">
       <div class="container">
-        <h2>Our Packages</h2>
+        <h2 id="packages-heading">Our Packages</h2>
         <div class="packages-grid">
-          <article class="package">
+          <article class="package" aria-label="Europe Explorer travel package">
             <img
               src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80"
-              alt="Europe Explorer"
+              alt="Europe scenic landscape"
             />
             <h3>Europe Explorer</h3>
             <p>10 Days | Starting from $1200</p>
-            <button>Book Now</button>
+            <button aria-label="Book Europe Explorer package">Book Now</button>
           </article>
-          <article class="package">
+
+          <article class="package" aria-label="Asian Wonders travel package">
             <img
               src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-              alt="Asian Wonders"
+              alt="Asian temple and mountains"
             />
             <h3>Asian Wonders</h3>
             <p>7 Days | Starting from $950</p>
-            <button>Book Now</button>
+            <button aria-label="Book Asian Wonders package">Book Now</button>
           </article>
-          <article class="package">
+
+          <article class="package" aria-label="Safari Adventure travel package">
             <img
               src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80"
-              alt="Safari Adventure"
+              alt="Safari jeep in the savannah"
             />
             <h3>Safari Adventure</h3>
             <p>5 Days | Starting from $700</p>
-            <button>Book Now</button>
+            <button aria-label="Book Safari Adventure package">Book Now</button>
           </article>
-          <article class="package">
+
+          <article class="package" aria-label="Island Escape travel package">
             <img
               src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=800&q=80"
-              alt="Island Escape"
+              alt="Island resort with palm trees"
             />
             <h3>Island Escape</h3>
             <p>8 Days | Starting from $1100</p>
-            <button>Book Now</button>
+            <button aria-label="Book Island Escape package">Book Now</button>
           </article>
         </div>
       </div>
     </section>
 
     <!-- testimonials -->
-    <section id="testimonials" class="section">
+    <section id="testimonials" role="region" aria-labelledby="testimonials-heading">
       <div class="container">
-        <h2>What Our Travelers Say</h2>
+        <h2 id="testimonials-heading">What Our Travelers Say</h2>
         <div class="testimonials-grid">
-          <blockquote class="testimonial">
-            <i class="fa-solid fa-quote-left fa-2x"></i>
+          <blockquote class="testimonial" aria-label="Testimonial by Sakshi Varma">
+            <i class="fa-solid fa-quote-left fa-2x" aria-hidden="true"></i>
             <p>
-              “BeyondBorders made our honeymoon unforgettable! Everything was
-              perfectly arranged.”
+              “BeyondBorders made our honeymoon unforgettable! Everything was perfectly arranged.”
             </p>
             <h4>- Sakshi Varma</h4>
           </blockquote>
-          <blockquote class="testimonial">
-            <i class="fa-solid fa-quote-left fa-2x"></i>
+          <blockquote class="testimonial" aria-label="Testimonial by Sakshi Varma">
+            <i class="fa-solid fa-quote-left fa-2x" aria-hidden="true"></i>
             <p>
-              “BeyondBorders made our honeymoon unforgettable! Everything was
-              perfectly arranged.!”
+              “The service was outstanding, and the itinerary exceeded our expectations!”
             </p>
             <h4>- Sakshi Varma</h4>
           </blockquote>
-          <blockquote class="testimonial">
-            <i class="fa-solid fa-quote-left fa-2x"></i>
+          <blockquote class="testimonial" aria-label="Testimonial by Sakshi Varma">
+            <i class="fa-solid fa-quote-left fa-2x" aria-hidden="true"></i>
             <p>
-              “BeyondBorders made our honeymoon unforgettable! Everything was
-              perfectly arranged.”
+              “We can’t wait to book again. Highly recommended!”
             </p>
             <h4>- Sakshi Varma</h4>
           </blockquote>
@@ -173,14 +177,12 @@
     </section>
 
     <!-- booking -->
-    <section id="booking">
+    <section id="booking" role="region" aria-labelledby="booking-heading">
       <div class="container">
-        <h2>Book Your Travel</h2>
-        <p>
-          Fill out the form below and let’s start planning your dream vacation!
-        </p>
+        <h2 id="booking-heading">Book Your Travel</h2>
+        <p>Fill out the form below and let’s start planning your dream vacation!</p>
 
-        <form aria-label="booking-form" method="post">
+        <form aria-label="Booking form" method="post">
           <label for="fullname">Full Name</label>
           <input
             type="text"
@@ -222,80 +224,70 @@
             placeholder="Enter your special requirements"
           ></textarea>
 
-          <button type="submit">Book Now</button>
+          <button type="submit" aria-label="Submit booking form">Book Now</button>
         </form>
       </div>
     </section>
 
     <!-- footer -->
-    <!-- footer starts -->
-<footer>
-  <div class="footer-top">
-    <!-- Brand Info -->
-    <div class="footer-brand">
-      <h3>BeyondBorders</h3>
-      <p>
-        Discover the world with us — your adventure starts here!  
-        Explore destinations, book with confidence, and travel beyond borders.
-      </p>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <footer role="contentinfo">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>BeyondBorders</h3>
+          <p>
+            Discover the world with us — your adventure starts here! Explore destinations, book with confidence, and travel beyond borders.
+          </p>
+          <div class="social-links" role="navigation" aria-label="Social media links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home" aria-label="Go to Home">Home</a></li>
+            <li><a href="#destinations" aria-label="View destinations">Destinations</a></li>
+            <li><a href="#packages" aria-label="View packages">Packages</a></li>
+            <li><a href="#testimonials" aria-label="View testimonials">Testimonials</a></li>
+            <li><a href="#booking" aria-label="Book now section">Book Now</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <ul>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 98765 43210</li>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> info@beyondborders.com</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 123, Global Street, Paris</li>
+          </ul>
+        </div>
+
+        <div class="footer-map">
+          <h4>Find Us</h4>
+          <iframe
+            title="BeyondBorders Office Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019835235083!2d-122.41941538468187!3d37.77492977975932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064d9d7b8a3%3A0x47fca1f7b3b9b0e!2sTravel%20Agency!5e0!3m2!1sen!2sin!4v1680000000000"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
-    </div>
 
-    <!-- Quick Links -->
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#booking">Book Now</a></li>
-      </ul>
-    </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 BeyondBorders. All rights reserved.</p>
+        <ul class="legal-links" role="list">
+          <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+          <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+          <li><a href="#" aria-label="Support">Support</a></li>
+        </ul>
+      </div>
 
-    <!-- Contact Info -->
-    <div class="footer-contact">
-      <h4>Contact Us</h4>
-      <ul>
-        <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
-        <li><i class="fa-solid fa-envelope"></i> info@beyondborders.com</li>
-        <li><i class="fa-solid fa-location-dot"></i> 123, Global Street, Paris</li>
-      </ul>
-    </div>
-
-    <!-- Map -->
-    <div class="footer-map">
-      <h4>Find Us</h4>
-      <iframe
-        title="BeyondBorders Office Location"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019835235083!2d-122.41941538468187!3d37.77492977975932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064d9d7b8a3%3A0x47fca1f7b3b9b0e!2sTravel%20Agency!5e0!3m2!1sen!2sin!4v1680000000000"
-        allowfullscreen=""
-        loading="lazy"
-      ></iframe>
-    </div>
-  </div>
-
-  <!-- Footer Bottom -->
-  <div class="footer-bottom">
-    <p>&copy; 2025 BeyondBorders. All rights reserved.</p>
-    <ul class="legal-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Service</a></li>
-      <li><a href="#">Support</a></li>
-    </ul>
-  </div>
-
-  <!-- Back to top -->
-  <button class="back-to-top" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-</footer>
-<!-- footer ends -->
-
+      <button class="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,104 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f7faff;
+    color: #111;
+  }
+  
+  /* Header Box */
+  .qs-hero-box {
+    background: linear-gradient(251deg, #6584e7, #fafbff);
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+  
+  /* Title */
+  .qs-title {
+    font-weight: 700;
+    font-size: 2.7rem;
+    line-height: 1.3;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(90deg, #6366f1, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .qs-subtitle {
+    font-size: 1.05rem;
+    color: #4b5563;
+  }
+  
+  /* Stats */
+  .stats-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .qs-stat {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 1rem 1.4rem;
+    border-radius: 16px;
+    min-width: 150px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .qs-stat .label {
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+  
+  .qs-stat .value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #3b82f6;
+  }
+  
+  .qs-stat .value-small {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2563eb;
+  }
+  
+  /* Panel on Right */
+  .qs-panel {
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* Green Sync Dot */
+  .qs-online-dot {
+    width: 12px;
+    height: 12px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+  }
+  
+  /* Cards */
+  .card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  }
+  
+  .card-body {
+    border-radius: 20px;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    border-radius: 12px;
+  }
+  
+  .btn-outline-primary {
+    border-radius: 12px;
+  }
+  

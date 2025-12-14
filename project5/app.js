@@ -1,10 +1,60 @@
 const rosterUrl = "https://jsonplaceholder.typicode.com/users?_limit=10";
-// Fake API to fetch 10 random providers
-
 const clockUrl = "https://worldtimeapi.org/api/timezone/Asia/Kolkata";
-// Real time API to sync with internet clock (IST)
 
-// All major UI components selected once to improve performance
+/* ================= AUTH (DUMMY LOGIN) ================= */
+const AUTH_KEY = "quickslot-user";
+
+const emailInput = document.getElementById("emailInput");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const userStatus = document.getElementById("userStatus");
+
+function isLoggedIn() {
+  return !!localStorage.getItem(AUTH_KEY);
+}
+
+function loginUser(email) {
+  localStorage.setItem(AUTH_KEY, JSON.stringify({ email }));
+}
+
+function logoutUser() {
+  localStorage.removeItem(AUTH_KEY);
+}
+
+function updateAuthUI() {
+  if (isLoggedIn()) {
+    const user = JSON.parse(localStorage.getItem(AUTH_KEY));
+    userStatus.textContent = `Logged in as ${user.email}`;
+    loginBtn.classList.add("d-none");
+    logoutBtn.classList.remove("d-none");
+  } else {
+    userStatus.textContent = "Not logged in";
+    loginBtn.classList.remove("d-none");
+    logoutBtn.classList.add("d-none");
+  }
+}
+
+loginBtn.onclick = () => {
+  const email = emailInput.value.trim();
+  if (!email) {
+    alert("Enter email");
+    return;
+  }
+  loginUser(email);
+  updateAuthUI();
+};
+
+logoutBtn.onclick = () => {
+  logoutUser();
+
+  // Clear email field on logout
+  emailInput.value = "";
+
+  updateAuthUI();
+};
+
+
+/* ================= UI ELEMENTS ================= */
 const providerSelect = document.getElementById("providerSelect");
 const dateInput = document.getElementById("dateInput");
 const loadSlotsBtn = document.getElementById("loadSlotsBtn");
@@ -19,7 +69,7 @@ const statBookings = document.getElementById("statBookings");
 const statClock = document.getElementById("statClock");
 const lastSync = document.getElementById("lastSync");
 
-// Modal elements
+/* ================= MODAL ================= */
 const confirmModal = new bootstrap.Modal(
   document.getElementById("confirmModal")
 );
@@ -28,17 +78,17 @@ const confirmMeta = document.getElementById("confirmMeta");
 const confirmBtn = document.getElementById("confirmBtn");
 const notesInput = document.getElementById("notesInput");
 
-// Tracks current app state in one place
+/* ================= STATE ================= */
 const state = {
-  providers: [], // list of all providers
-  nowUtc: null, // synced internet clock
-  target: null, // currently selected provider + date
-  bookings: [], // all booked slots
-  pendingSlot: null, // temporary slot before confirmation
+  providers: [],
+  nowUtc: null,
+  target: null,
+  bookings: [],
+  pendingSlot: null,
 };
 
+/* ================= STORAGE ================= */
 function readBookings() {
-  // Get bookings from LocalStorage or use empty array
   state.bookings = JSON.parse(
     localStorage.getItem("quickslot-bookings") || "[]"
   );
@@ -46,9 +96,10 @@ function readBookings() {
 
 function saveBookings() {
   localStorage.setItem("quickslot-bookings", JSON.stringify(state.bookings));
-  statBookings.textContent = state.bookings.length; // Update dashboard stat
+  statBookings.textContent = state.bookings.length;
 }
 
+/* ================= PROVIDERS ================= */
 async function fetchProviders() {
   providerSelect.disabled = true;
   providerSelect.innerHTML = `<option>Loading roster…</option>`;
@@ -57,12 +108,10 @@ async function fetchProviders() {
     const res = await fetch(rosterUrl);
     const data = await res.json();
 
-    // Map API data to simple provider objects
     state.providers = data.map((person) => ({
       id: person.id,
       name: person.name,
       specialty: person.company?.bs || "Generalist",
-      city: person.address?.city || "Remote",
     }));
 
     statProviders.textContent = state.providers.length;
@@ -77,7 +126,6 @@ function renderProviderSelect() {
   providerSelect.disabled = false;
   providerSelect.innerHTML = `<option value="">Select provider</option>`;
 
-  // Create <option> for each provider
   state.providers.forEach((p) => {
     const opt = document.createElement("option");
     opt.value = p.id;
@@ -86,53 +134,35 @@ function renderProviderSelect() {
   });
 }
 
+/* ================= CLOCK ================= */
 async function syncClock() {
   try {
     const res = await fetch(clockUrl);
     const data = await res.json();
-
-    // Convert string date to JS Date()
     state.nowUtc = new Date(data.datetime);
-
-    // Show time on UI
-    statClock.textContent = state.nowUtc.toLocaleTimeString("en-IN", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    lastSync.textContent = `Last synced ${new Date().toLocaleTimeString(
-      "en-IN"
-    )}`;
-  } catch (err) {
-    // fallback when time API fails
-    console.warn("Clock sync failed, falling back to client time", err);
-
-    state.nowUtc = new Date(); // local time
-    statClock.textContent = state.nowUtc.toLocaleTimeString("en-IN");
-    lastSync.textContent = `Fallback to client ${new Date().toLocaleTimeString(
-      "en-IN"
-    )}`;
+  } catch {
+    state.nowUtc = new Date();
   }
+
+  statClock.textContent = state.nowUtc.toLocaleTimeString("en-IN");
+  lastSync.textContent = `Last synced ${new Date().toLocaleTimeString("en-IN")}`;
 }
 
+/* ================= DATE ================= */
 function setMinDate() {
-  const today = new Date().toISOString().split("T")[0]; // yyyy-mm-dd
+  const today = new Date().toISOString().split("T")[0];
   dateInput.min = today;
   dateInput.value = today;
 }
 
+/* ================= SLOTS ================= */
 function buildSlots(date) {
   const slots = [];
-
   for (let hour = 9; hour <= 17; hour++) {
     ["00", "30"].forEach((minute) => {
-      const label = `${String(hour).padStart(2, "0")}:${minute}`; // 09:00, 09:30, etc.
-      slots.push(label);
+      slots.push(`${String(hour).padStart(2, "0")}:${minute}`);
     });
   }
-
-  // Convert each slot into an object with "disabled" flag
   return slots.map((label) => ({
     label,
     disabled: isSlotDisabled(date, label),
@@ -140,61 +170,41 @@ function buildSlots(date) {
 }
 
 function isSlotDisabled(date, slotLabel) {
-  // Convert slot + date → JS Date()
   const targetDate = new Date(`${date}T${slotLabel}:00+05:30`);
   const now = state.nowUtc || new Date();
 
-  // Rule 1: cannot book past times
   if (targetDate < now) return true;
 
-  // Rule 2: cannot book already-booked slot for same provider
-  const alreadyBooked = state.bookings.some(
-    (item) =>
-      item.date === date &&
-      item.slot === slotLabel &&
-      item.providerId === state.target?.providerId
+  return state.bookings.some(
+    (b) =>
+      b.date === date &&
+      b.slot === slotLabel &&
+      b.providerId === state.target?.providerId
   );
-
-  return alreadyBooked;
 }
 
 function renderSlots(providerId, date) {
   const provider = state.providers.find((p) => p.id === Number(providerId));
+  if (!provider || !date) return;
 
-  // If no provider or date selected → show placeholder
-  if (!provider || !date) {
-    slotsGrid.innerHTML = `<div class="col-12 text-center text-secondary">Select a provider and date to view availability.</div>`;
-    return;
-  }
+  state.target = { providerId: provider.id, date };
 
-  // Save current selection in global state
-  state.target = { providerId: provider.id, providerName: provider.name, date };
-
-  // Update header info
   slotsHeadline.textContent = `Slots for ${provider.name}`;
-  slotMeta.textContent = `${new Date(
-    date
-  ).toDateString()} • refreshed ${new Date().toLocaleTimeString("en-IN")}`;
-
-  const slots = buildSlots(date);
+  slotMeta.textContent = `${new Date(date).toDateString()}`;
 
   slotsGrid.innerHTML = "";
 
-  // Render each slot as a card
-  slots.forEach((slot) => {
+  buildSlots(date).forEach((slot) => {
     const col = document.createElement("div");
     col.className = "col-6 col-xl-4";
 
     const card = document.createElement("div");
-    card.className = `slot-card h-100 ${slot.disabled ? "disabled" : ""}`;
+    card.className = `slot-card ${slot.disabled ? "disabled" : ""}`;
     card.innerHTML = `
-      <div class="fw-semibold">${slot.label}</div>
-      <div class="small text-secondary">${
-        slot.disabled ? "Unavailable" : "Tap to book"
-      }</div>
+      <div>${slot.label}</div>
+      <small>${slot.disabled ? "Unavailable" : "Tap to book"}</small>
     `;
 
-    // When available → clicking opens modal
     if (!slot.disabled) {
       card.onclick = () => openModal(provider, date, slot.label);
     }
@@ -204,132 +214,95 @@ function renderSlots(providerId, date) {
   });
 }
 
+/* ================= MODAL ================= */
 function openModal(provider, date, slotLabel) {
   state.pendingSlot = { provider, date, slotLabel };
-
   confirmTitle.textContent = provider.name;
-  confirmMeta.textContent = `${date} · ${slotLabel} IST`;
+  confirmMeta.textContent = `${date} · ${slotLabel}`;
   notesInput.value = "";
-
   confirmModal.show();
 }
 
-confirmBtn.addEventListener("click", () => {
-  if (!state.pendingSlot) return; // safety check
-
+confirmBtn.onclick = () => {
   const payload = {
-    id: crypto.randomUUID(), // unique booking id
+    id: crypto.randomUUID(),
     providerId: state.pendingSlot.provider.id,
     provider: state.pendingSlot.provider.name,
-    specialty: state.pendingSlot.provider.specialty,
     date: state.pendingSlot.date,
     slot: state.pendingSlot.slotLabel,
     notes: notesInput.value.trim(),
   };
 
   state.bookings.push(payload);
-
-  saveBookings(); // persist
-  renderSlots(state.pendingSlot.provider.id, state.pendingSlot.date);
+  saveBookings();
+  renderSlots(payload.providerId, payload.date);
   renderBookings();
-  sendConfirmationEmail(payload); // optional API
+  sendConfirmationEmail(payload);
   confirmModal.hide();
-});
+};
 
+/* ================= BOOKINGS ================= */
 function renderBookings() {
   bookingsList.innerHTML = "";
 
-  // Empty state message
   if (!state.bookings.length) {
-    bookingsList.innerHTML = `<div class="text-secondary small">No bookings yet.</div>`;
+    bookingsList.innerHTML = `<div class="text-secondary">No bookings yet.</div>`;
     return;
   }
 
-  // Sort by date+time for clean ordering
-  state.bookings
-    .slice()
-    .sort((a, b) => `${a.date}${a.slot}`.localeCompare(`${b.date}${b.slot}`))
-    .forEach((booking) => {
-      const card = document.createElement("div");
-      card.className = "booking-card";
-
-      card.innerHTML = `
-        <div class="d-flex justify-content-between align-items-start gap-3">
-          <div>
-            <div class="fw-semibold">${booking.provider}</div>
-            <div class="small text-secondary">${booking.date} · ${
-        booking.slot
-      }</div>
-            <div class="small text-muted">${booking.notes || "No notes"}</div>
-          </div>
-
-          <button class="btn btn-sm btn-outline-danger" data-id="${booking.id}">
-            <i class="bi bi-x"></i>
-          </button>
-        </div>
-      `;
-
-      // Remove booking on click
-      card.querySelector("button").onclick = () => cancelBooking(booking.id);
-
-      bookingsList.appendChild(card);
-    });
+  state.bookings.forEach((b) => {
+    const div = document.createElement("div");
+    div.textContent = `${b.provider} | ${b.date} ${b.slot}`;
+    bookingsList.appendChild(div);
+  });
 }
 
-function cancelBooking(id) {
-  state.bookings = state.bookings.filter((booking) => booking.id !== id);
-  saveBookings();
-  renderBookings();
-
-  if (state.target) {
-    renderSlots(state.target.providerId, state.target.date);
-  }
-}
-
-clearBookingsBtn.addEventListener("click", () => {
-  if (!state.bookings.length) return;
-
-  if (confirm("Clear all stored bookings?")) {
+clearBookingsBtn.onclick = () => {
+  if (confirm("Clear all bookings?")) {
     state.bookings = [];
     saveBookings();
     renderBookings();
-    if (state.target) renderSlots(state.target.providerId, state.target.date);
   }
-});
+};
 
-loadSlotsBtn.addEventListener("click", async () => {
-  const providerId = providerSelect.value;
-  const date = dateInput.value;
+/* ================= EVENTS ================= */
+loadSlotsBtn.onclick = async () => {
+  if (!isLoggedIn()) {
+    alert("Please login first");
+    return;
+  }
 
-  if (!providerId || !date) {
+  if (!providerSelect.value || !dateInput.value) {
     alert("Select provider and date");
     return;
   }
 
-  await syncClock(); // ensure time accuracy
-  renderSlots(providerId, date);
-});
-
-refreshBtn.addEventListener("click", async () => {
   await syncClock();
-  if (state.target) renderSlots(state.target.providerId, state.target.date);
-});
+  renderSlots(providerSelect.value, dateInput.value);
+};
 
+refreshBtn.onclick = syncClock;
+
+/* ================= DUMMY MAIL ================= */
+function sendConfirmationEmail(booking) {
+  console.log("📧 Dummy Email Sent:", booking);
+}
+
+/* ================= INIT ================= */
 async function init() {
+  updateAuthUI();
   readBookings();
   statBookings.textContent = state.bookings.length;
-
-  setMinDate(); // prevent selecting past dates
-
-  // Load providers + sync clock in parallel
+  setMinDate();
   await Promise.all([fetchProviders(), syncClock()]);
-
   renderBookings();
+  const loginModal = new bootstrap.Modal(
+  document.getElementById("loginModal")
+);
+
+if (!isLoggedIn()) {
+  loginModal.show();
+}
 }
 
 document.addEventListener("DOMContentLoaded", init);
-
-//task that u need to do before submitting
-//u have to add a mail function or it can a dummy
-//change the ui but keep the functionality same..
-// add a login and signup page ui so user can login then book slot

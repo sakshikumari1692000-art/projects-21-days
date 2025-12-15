@@ -799,3 +799,71 @@ if (resetBtn) {
 
 //change the ui version
 //add a login and signup page ui so user can login
+/* =====================
+   Auth Logic (UI Only)
+===================== */
+
+const authOverlay = document.getElementById("authOverlay");
+const loginBtn = document.getElementById("loginBtn");
+const authForm = document.getElementById("authForm");
+const authTitle = document.getElementById("authTitle");
+const authSwitch = document.getElementById("authSwitch");
+const authSwitchText = document.getElementById("authSwitchText");
+const authConfirm = document.getElementById("authConfirm");
+
+let isLogin = true;
+
+// Show login
+loginBtn.onclick = () => {
+  authOverlay.classList.remove("d-none");
+  document.body.classList.add("auth-active");
+};
+
+// Switch login/signup
+authSwitch.onclick = () => {
+  isLogin = !isLogin;
+
+  authTitle.textContent = isLogin ? "Login" : "Sign Up";
+  authConfirm.classList.toggle("d-none", isLogin);
+  authConfirm.required = !isLogin;
+
+  authForm.querySelector("button").textContent = isLogin
+    ? "Login"
+    : "Create Account";
+
+  authSwitchText.textContent = isLogin
+    ? "Don’t have an account?"
+    : "Already have an account?";
+};
+
+// Submit
+authForm.onsubmit = e => {
+  e.preventDefault();
+
+  const email = authEmail.value;
+  const password = authPassword.value;
+  const confirm = authConfirm.value;
+
+  if (!isLogin && password !== confirm) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  if (!isLogin) {
+    localStorage.setItem("user", JSON.stringify({ email, password }));
+    alert("Signup successful! Please login.");
+    authSwitch.click();
+    return;
+  }
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user || user.email !== email || user.password !== password) {
+    alert("Invalid credentials");
+    return;
+  }
+
+  // Login success
+  authOverlay.classList.add("d-none");
+  document.body.classList.remove("auth-active");
+  loginBtn.textContent = email.split("@")[0];
+};

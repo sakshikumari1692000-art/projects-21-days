@@ -5,6 +5,9 @@
   --surface-panel: #ffffff;
   --text-muted: #6b7280;
   --radius-xl: 1.25rem;
+  --primary-gradient: linear-gradient(45deg, #0d6efd, #0056b3);
+  --dark-gradient: linear-gradient(45deg, #102341, #0b1729);
+  --hover-highlight: rgba(13, 110, 253, 0.1);
 }
 
 /* =====================
@@ -13,11 +16,53 @@
 body {
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 .page-shell {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--resume-heading);
+  font-weight: 600;
+}
+
+/* Links */
+a {
+  color: var(--resume-heading);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+} 
+
+/* Buttons */
+
+button:hover {
+  background: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards */
+.card {
+  background: var(--surface-panel);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 
 /* =====================
    Dark mode
@@ -30,8 +75,9 @@ body[data-mode="dark"] {
 body[data-mode="dark"] .card,
 body[data-mode="dark"] .builder-panel,
 body[data-mode="dark"] .preview-shell {
-  background-color: #102341;
+  background: var(--dark-gradient);
   color: #e5e7eb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 body[data-mode="dark"] .text-muted {
@@ -42,6 +88,25 @@ body[data-mode="dark"] .resume-preview {
   background: #0f1f38;
   color: #e5e7eb;
   border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Hover Effects */
+body[data-mode="dark"] .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+/* Inputs */
+input, select, textarea {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--resume-heading);
+  outline: none;
 }
 
 /* =====================
@@ -111,8 +176,10 @@ body[data-mode="dark"] .resume-preview {
 .form-section-title {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #64748b;
+  text-decoration: underline;
 }
 
 .builder-panel .border {

@@ -795,10 +795,6 @@ if (resetBtn) {
   });
 }
 
-//hw
-
-//change the ui version
-//add a login and signup page ui so user can login
 /* =====================
    Auth Logic (UI Only)
 ===================== */

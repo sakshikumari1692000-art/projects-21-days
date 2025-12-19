@@ -1,9 +1,10 @@
 import React from "react";
+import Home from "./Screen/Home";
 
 const App = () =>{
   return(
     <div>
-     Welcome to E-Commerce App
+            <Home />
       </div>
   );
 }

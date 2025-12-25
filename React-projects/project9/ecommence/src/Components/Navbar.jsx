@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import CartIcon from "../Icons/CartIcon";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
@@ -8,14 +9,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
 
         {/* Logo (Enhanced Design) */}
-        <div className="flex items-center cursor-pointer select-none">
+        <Link to ="/" className="flex items-center cursor-pointer select-none">
           <span className="text-2xl font-extrabold text-gray-900 tracking-tight">
             Nova
           </span>
           <span className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
             Edge
           </span>
-        </div>
+        </Link>
 
         {/* Search */}
         <div className="flex-1 max-w-xl hidden md:block">
@@ -23,7 +24,7 @@ const Navbar = () => {
         </div>
 
         {/* Cart */}
-        <div className="flex items-center">
+        <Link to="/products" className="flex items-center">
         <button
             className="
             relative
@@ -56,7 +57,7 @@ const Navbar = () => {
         2
         </span>
     </button>
-    </div>
+    </Link>
 
       </div>
 

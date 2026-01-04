@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -76,7 +77,7 @@ const SearchBar = () => {
           "
         >
           {searchResults.map((product) => (
-            <div
+            <Link to = {`/products/${product.id}`}
               key={product.id}
               className="
                 flex items-center gap-3
@@ -94,7 +95,7 @@ const SearchBar = () => {
               <p className="text-sm text-gray-700 leading-tight line-clamp-2">
                 {product.title}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       )}

@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main container */
+.container {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Left control panel */
+.controls {
+  width: 38%;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Right image area */
+.canvasContainer {
+  width: 62%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #222, #000);
+}
+
+#canvas {
+  max-width: 95%;
+  max-height: 95%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Heading */
+.heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* File input */
+.inputContainer {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.uploadBox {
+  height: 140px;
+  border-radius: 14px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.uploadBox:hover {
+  border-color: #ff8a00;
+  background: rgba(255, 138, 0, 0.08);
+  transform: scale(1.02);
+}
+
+.uploadIcon {
+  font-size: 2.4rem;
+}
+
+.uploadText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.uploadSub {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* Slider section */
+.feature-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature-label {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Slider */
+.feature-input {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ff8a00, #e52e71);
+  outline: none;
+  cursor: pointer;
+}
+
+.feature-input::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff8a00;
+}
+
+/* Buttons */
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 138, 0, 0.4);
+}
+
+/* Download button */
+.downloadImgBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.downloadImgBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 114, 255, 0.5);
+}

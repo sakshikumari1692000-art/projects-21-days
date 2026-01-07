@@ -1,0 +1,10 @@
+What we used in this site 
+1) React -> For Development
+2) Tailwind CSS -> Styles
+3) rechart -> Barcharts
+4) zustand -> store MAnagement
+5) lucid-react -> icons
+6) uuid -> help to create reamdom id
+
+Steps tp create this 
+1) Store the transaction with income or somethhing else -> first we create a store (Zustand (store folder create))

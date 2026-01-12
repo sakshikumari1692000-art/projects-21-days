@@ -1,7 +1,9 @@
 import { Plus } from "lucide-react";
 import React, { useState } from "react";
-
+import {useLedgerStore} from "../../Store/useLedgerStore";
 const TransactionForm = () => {
+    const addTransaction = useLedgerStore((state)=>state.addTransaction);
+    // const allTransactions = useLedgerStore((state)=>state.transactions);
     const [currentTransaction, setCurrentTransaction] = useState({
         description: "",
         amount: 0,
@@ -9,7 +11,19 @@ const TransactionForm = () => {
     });
 
     const handleAddTransaction = () => {
-        console.log(currentTransaction, "currentTransaction");
+      // THis is to add transacation to the store
+      addTransaction({
+        description : currentTransaction.description,
+        amount : parseFloat(currentTransaction.amount),
+        type : currentTransaction.type,
+      });
+      // Reset the form
+      setCurrentTransaction({
+        description: "",
+        amount: 0,
+        type: "expense",
+      })
+        console.log(useLedgerStore.getState().transactions, "allTransactions");
     }
   return (
     <div className="w-full max-w-md mx-auto p-[2px] rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl">
@@ -32,6 +46,7 @@ const TransactionForm = () => {
             id="des"
             name="des"
             placeholder=" "
+            value = {currentTransaction.description}
             className="peer w-full px-4 pt-6 pb-2 bg-transparent border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none transition"
           />
           <label
@@ -55,6 +70,7 @@ const TransactionForm = () => {
             id="amount"
             name="amount"
             placeholder=" "
+            value = {currentTransaction.amount}
             className="peer w-full px-4 pt-6 pb-2 bg-transparent border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none transition"
           />
           <label
@@ -72,6 +88,8 @@ const TransactionForm = () => {
             className="cursor-pointer flex items-center justify-center gap-2 border-2 border-red-200 rounded-xl py-3 text-red-600 font-semibold hover:bg-red-50 transition"
           >
             <input
+
+            checked ={currentTransaction.type === "expense"}
              onChange = {() => {
                 setCurrentTransaction({
                     ...currentTransaction,
@@ -92,6 +110,7 @@ const TransactionForm = () => {
             className="cursor-pointer flex items-center justify-center gap-2 border-2 border-green-200 rounded-xl py-3 text-green-600 font-semibold hover:bg-green-50 transition"
           >
             <input
+             checked ={currentTransaction.type === "income"}
             onChange = {() => {
                 setCurrentTransaction({
                     ...currentTransaction,

@@ -1,21 +1,46 @@
-import { create } from 'zustand';
-import { v4 as uuidv4 } from 'uuid';
+import { create } from "zustand";
+import { v4 as uuidv4 } from "uuid";
 
-//useLedgerStore is a custom hook that we creates a store for managing ledger transactions and use it anywhere 
-export const useLedgerStore = create((set) => ({
-  transactions:[],
-  addTransaction: (transaction) => set((state) => ({ 
-    transactions: [{ id : uuidv4() , date : new Date().toISOString() , ...transaction}, ...state.transactions] 
-  })),  // transaction is new one and transactions are old (s)
-  deleteTransaction: (id) =>  set((state) => ({ transactions: state.transactions.filter((tObj) => tObj.id !== id) })),
-}))
+export const useLedgerStore = create((set, get) => ({
+  transactions: [],
+  addTransaction: (transaction) =>
+    set((state) => ({
+      transactions: [
+        { id: uuidv4(), date: new Date().toISOString(), ...transaction },
+        ...state.transactions,
+      ],
+    })),
+  deleteTransaction: (id) => {
+    set((state) => ({
+      transactions: state.transactions.filter((tObj) => tObj.id !== id),
+    }));
+  },
+  totalSummary: () => {
+    let { transactions } = get();
 
+    let totalExpense = 0;
+    let totalIncome = 0;
 
-// 
-// transactions = {
-//   id : uniqueId,
-//     date : newDate(),
-//     description : "",
-//     amount : "",
-//     type :  "expense" | "income",
+    transactions.forEach((tObj) => {
+      if (tObj.type === "income") {
+        totalIncome += tObj.amount;
+      } else {
+        totalExpense += tObj.amount;
+      }
+    });
+
+    return {
+      totalExpense,
+      totalIncome,
+      totalBalance: totalIncome - totalExpense,
+    };
+  },
+}));
+
+// {
+// id : uniqueId,
+// date : newDate ,
+// description : "",
+// amount : "",
+// type:"expense"|"income"
 //  }

@@ -19,35 +19,38 @@ const TotalAmounts = () => {
   const COLORS = ["#22c55e", "#ef4444"];
 
   return (
-    <div className="w-full max-w-6xl mx-auto mb-12">
-
+    <div className="w-full max-w-7xl mx-auto mb-14">
+  
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <div className="glass-card border-green-400/40">
-          <p>Total Income</p>
-          <h2 className="text-green-400">₹{summaryObj.totalIncome || 0}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+  
+        <div className="bg-white rounded-3xl p-8 shadow-xl border border-green-100">
+          <p className="text-sm text-gray-400 uppercase tracking-wider">Income</p>
+          <h2 className="text-4xl font-bold text-green-600 mt-3">
+            ₹ {summaryObj.totalIncome || 0}
+          </h2>
         </div>
-
-        <div className="glass-card border-red-400/40">
-          <p>Total Expense</p>
-          <h2 className="text-red-400">₹{summaryObj.totalExpense || 0}</h2>
+  
+        <div className="bg-white rounded-3xl p-8 shadow-xl border border-red-100">
+          <p className="text-sm text-gray-400 uppercase tracking-wider">Expense</p>
+          <h2 className="text-4xl font-bold text-red-500 mt-3">
+            ₹ {summaryObj.totalExpense || 0}
+          </h2>
         </div>
-
-        <div className="glass-card border-indigo-400/40">
-          <p>Total Balance</p>
-          <h2 className="text-indigo-400">₹{summaryObj.totalBalance || 0}</h2>
+  
+        <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 shadow-xl text-white">
+          <p className="text-sm uppercase tracking-wider opacity-80">Balance</p>
+          <h2 className="text-4xl font-bold mt-3">
+            ₹ {summaryObj.totalBalance || 0}
+          </h2>
         </div>
+  
       </div>
-
-      {/* Pie Chart */}
-      <div className="glass-panel flex justify-center">
-        <PieChart width={380} height={380}>
-          <Pie
-            data={data}
-            dataKey="value"
-            outerRadius={140}
-            innerRadius={80}
-          >
+  
+      {/* Chart Card */}
+      <div className="bg-white rounded-3xl shadow-xl p-10 flex justify-center">
+        <PieChart width={360} height={360}>
+          <Pie data={data} dataKey="value" outerRadius={130} innerRadius={80}>
             {data.map((_, i) => (
               <Cell key={i} fill={COLORS[i]} />
             ))}
@@ -56,9 +59,9 @@ const TotalAmounts = () => {
           <Legend />
         </PieChart>
       </div>
-
+  
     </div>
-  );
+  );  
 };
 
 export default TotalAmounts;

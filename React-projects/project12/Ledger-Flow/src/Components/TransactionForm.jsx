@@ -11,6 +11,8 @@ const TransactionForm = () => {
     });
 
     const handleAddTransaction = () => {
+      if (currentTransaction.description.trim().length == 0) return;
+      if (currentTransaction.amount <= 0) return;
       // THis is to add transacation to the store
       addTransaction({
         description : currentTransaction.description,
@@ -25,120 +27,67 @@ const TransactionForm = () => {
       })
         console.log(useLedgerStore.getState().transactions, "allTransactions");
     }
-  return (
-    <div className="w-full max-w-md mx-auto p-[2px] rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl">
-      <div className="bg-white rounded-3xl p-7 space-y-6">
-
-        <h2 className="text-2xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent">
-          New Transaction
+    return (
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8">
+    
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+          Add Transaction
         </h2>
-
-        {/* Description */}
-        <div className="relative">
+    
+        <div className="space-y-5">
+    
           <input
-            onChange = {(event) => {
-                setCurrentTransaction({
-                    ...currentTransaction,
-                    description: event.target.value,
-                })
-            }}
+            value={currentTransaction.description}
+            onChange={(e)=>setCurrentTransaction({...currentTransaction,description:e.target.value})}
             type="text"
-            id="des"
-            name="des"
-            placeholder=" "
-            value = {currentTransaction.description}
-            className="peer w-full px-4 pt-6 pb-2 bg-transparent border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none transition"
+            placeholder="Description"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-400 outline-none"
           />
-          <label
-            htmlFor="des"
-            className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-indigo-600 transition-all"
-          >
-            Description
-          </label>
-        </div>
-
-        {/* Amount */}
-        <div className="relative">
+    
           <input
-            onChange = {(event) => {
-                setCurrentTransaction({
-                    ...currentTransaction,
-                    amount: event.target.value,
-                })
-            }}
+            value={currentTransaction.amount}
+            onChange={(e)=>setCurrentTransaction({...currentTransaction,amount:e.target.value})}
             type="number"
-            id="amount"
-            name="amount"
-            placeholder=" "
-            value = {currentTransaction.amount}
-            className="peer w-full px-4 pt-6 pb-2 bg-transparent border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-0 outline-none transition"
+            placeholder="Amount"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-400 outline-none"
           />
-          <label
-            htmlFor="amount"
-            className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-indigo-600 transition-all"
+    
+          <div className="flex gap-4">
+            <button
+              onClick={()=>setCurrentTransaction({...currentTransaction,type:"expense"})}
+              className={`flex-1 py-3 rounded-xl font-semibold ${
+                currentTransaction.type === "expense"
+                  ? "bg-red-500 text-white"
+                  : "bg-red-100 text-red-600"
+              }`}
+            >
+              Expense
+            </button>
+    
+            <button
+              onClick={()=>setCurrentTransaction({...currentTransaction,type:"income"})}
+              className={`flex-1 py-3 rounded-xl font-semibold ${
+                currentTransaction.type === "income"
+                  ? "bg-green-500 text-white"
+                  : "bg-green-100 text-green-600"
+              }`}
+            >
+              Income
+            </button>
+          </div>
+    
+          <button
+            onClick={handleAddTransaction}
+            className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-bold shadow-lg hover:opacity-90 transition"
           >
-            Amount (₹)
-          </label>
+            + Add Transaction
+          </button>
+    
         </div>
-
-        {/* Type */}
-        <div className="grid grid-cols-2 gap-4">
-          <label
-            htmlFor="expense"
-            className="cursor-pointer flex items-center justify-center gap-2 border-2 border-red-200 rounded-xl py-3 text-red-600 font-semibold hover:bg-red-50 transition"
-          >
-            <input
-
-            checked ={currentTransaction.type === "expense"}
-             onChange = {() => {
-                setCurrentTransaction({
-                    ...currentTransaction,
-                    type: "expense",
-                })
-            }}
-              id="expense"
-              type="radio"
-              name="type"
-              value="expense"
-              className="accent-red-500"
-            />
-            Expense
-          </label>
-
-          <label
-            htmlFor="income"
-            className="cursor-pointer flex items-center justify-center gap-2 border-2 border-green-200 rounded-xl py-3 text-green-600 font-semibold hover:bg-green-50 transition"
-          >
-            <input
-             checked ={currentTransaction.type === "income"}
-            onChange = {() => {
-                setCurrentTransaction({
-                    ...currentTransaction,
-                    type: "income",
-                })
-            }}
-              id="income"
-              type="radio"
-              name="type"
-              value="income"
-              className="accent-green-500"
-            />
-            Income
-          </label>
-        </div>
-
-        {/* Button */}
-        <button onClick={handleAddTransaction} className="w-full relative overflow-hidden bg-gradient-to-r from-indigo-600 to-pink-500 text-white py-3 rounded-xl font-bold tracking-wide shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
-          <span className="absolute inset-0 bg-white/20 blur-xl opacity-0 hover:opacity-100 transition"></span>
-          <span className="relative flex items-center justify-center gap-2">
-            <Plus size={18} />
-            Add Transaction
-          </span>
-        </button>
-
       </div>
-    </div>
-  );
+    );
+    
+    
 };
 
 export default TransactionForm;

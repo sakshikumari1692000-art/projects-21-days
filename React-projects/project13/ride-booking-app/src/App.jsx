@@ -7,42 +7,37 @@ const App = () => {
   const [active, setActive] = useState("profile");
 
   return (
-    <div className="min-h-screen bg-neutral-900 relative pb-20">
-      {active == "profile" && <Profile />}
-      {active == "home" && <Home setActive={setActive} />}
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#1f2937,_#020617_70%)] flex justify-center items-center relative">
 
-      {/* Bottom Navigation */}
-      <div className="absolute bottom-0 left-0 right-0 bg-neutral-800 border-t border-neutral-700">
-        <div className="flex justify-center items-center h-16">
-          <div
-            onClick={() => {
-              setActive("home");
-            }}
-            className={`flex flex-col items-center gap-1 cursor-pointer transition mx-4
-              ${
-                active === "home"
-                  ? "text-white"
-                  : "text-neutral-500 hover:text-neutral-300"
-              }`}
+      {/* Phone Frame */}
+      <div className="w-full max-w-md min-h-screen bg-neutral-900/90 backdrop-blur-xl shadow-[0_0_80px_rgba(99,102,241,0.15)] relative pb-28">
+
+        {active === "profile" && <Profile />}
+        {active === "home" && <Home setActive={setActive} />}
+
+        {/* Bottom Nav */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 rounded-2xl shadow-2xl flex justify-around py-3">
+
+          <button
+            onClick={() => setActive("home")}
+            className={`flex flex-col items-center gap-1 ${
+              active === "home" ? "text-indigo-400" : "text-neutral-500"
+            }`}
           >
-            <House className="w-6 h-6" />
+            <House />
             <span className="text-xs">Home</span>
-          </div>
+          </button>
 
-          <div
-            onClick={() => {
-              setActive("profile");
-            }}
-            className={`flex mx-4 flex-col items-center gap-1 cursor-pointer transition
-              ${
-                active === "profile"
-                  ? "text-white"
-                  : "text-neutral-500 hover:text-neutral-300"
-              }`}
+          <button
+            onClick={() => setActive("profile")}
+            className={`flex flex-col items-center gap-1 ${
+              active === "profile" ? "text-indigo-400" : "text-neutral-500"
+            }`}
           >
-            <SquareUser className="w-6 h-6" />
+            <SquareUser />
             <span className="text-xs">Profile</span>
-          </div>
+          </button>
+
         </div>
       </div>
     </div>

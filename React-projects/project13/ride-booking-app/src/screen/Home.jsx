@@ -10,77 +10,80 @@ const Home = ({ setActive }) => {
   const savedPlaces = useSelector((store) => store.app.savedPlaces);
 
   return (
-    <div className="bg-neutral-900 p-4 pb-24 space-y-4">
-      {/* Top Card (same style as Profile header) */}
-      <div className="bg-neutral-800 rounded-2xl p-6 shadow-lg text-neutral-200 flex items-center justify-between">
+    <div className="p-6 space-y-8">
+
+      {/* Header Card (same style as Profile header) */}
+      <div className="bg-neutral-800/80 backdrop-blur-xl rounded-2xl p-5 shadow-xl border border-neutral-700 flex justify-between items-center">
         <div>
-          <p className="text-sm text-neutral-400">Good Evening</p>
-          <p className="text-xl font-semibold">{userName}</p>
+          <p className="text-xs text-neutral-400">Good Evening</p>
+          <h1 className="text-xl font-semibold text-white">{userName}</h1>
         </div>
 
         <button
-          onClick={() => {
-            setActive("profile");
-          }}
-          className="px-4 py-2 rounded-xl bg-neutral-700 hover:bg-neutral-600 transition text-sm font-medium"
+          onClick={() => setActive("profile")}
+          className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-600 text-white text-sm font-semibold shadow-lg"
         >
           ₹ {walletBalance}
         </button>
       </div>
 
-      {/* Ride Card (same visual language as Wallet / Saved Locations) */}
-      <div className="bg-neutral-800 rounded-2xl p-6 shadow-lg text-neutral-200 space-y-5">
-        <p className="text-lg font-semibold">Where to?</p>
+      {/* Ride Card */}
+      <div className="bg-neutral-800/80 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-neutral-700 space-y-7">
 
-        <input
-          onChange={(event) => {
-            setPickupLocation(event.target.value);
-          }}
-          value={pickupLocation}
-          id="pickup"
-          type="text"
-          placeholder="Pickup location"
-          className="w-full px-4 py-3 rounded-xl bg-neutral-700 border border-neutral-600 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-        />
+        <h2 className="text-lg font-semibold text-white">Book a Ride</h2>
 
-        <input
-          onChange={(event) => {
-            setDestinationLocation(event.target.value);
-          }}
-          value={destinationLocation}
-          id="destination"
-          type="text"
-          placeholder="Destination"
-          className="w-full px-4 py-3 rounded-xl bg-neutral-700 border border-neutral-600 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-        />
-
-        {/* Saved Places – styled like Profile cards */}
-        <div className="space-y-2">
-          {savedPlaces.map((data) => {
-            return (
-              <div
-                key={data.id}
-                onClick={() => {
-                  setDestinationLocation(data.address);
-                }}
-                className="flex items-center justify-between px-4 py-3 rounded-xl bg-neutral-700 hover:bg-neutral-600 cursor-pointer transition"
-              >
-                <p className="text-sm font-medium text-neutral-300">
-                  {data.type}
-                </p>
-              </div>
-            );
-          })}
+        {/* Pickup */}
+        <div>
+          <p className="text-xs text-neutral-400 mb-1">Pickup</p>
+          <input
+            value={pickupLocation}
+            onChange={(e) => setPickupLocation(e.target.value)}
+            placeholder="Enter pickup location"
+            className="w-full px-5 py-4 rounded-xl bg-neutral-900 border border-neutral-700 focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-neutral-500"
+          />
         </div>
 
-        <button className="w-full bg-white text-black py-3 rounded-xl font-semibold hover:bg-neutral-200 transition">
+        {/* Destination */}
+        <div>
+          <p className="text-xs text-neutral-400 mb-1">Destination</p>
+          <input
+            value={destinationLocation}
+            onChange={(e) => setDestinationLocation(e.target.value)}
+            placeholder="Where are you going?"
+            className="w-full px-5 py-4 rounded-xl bg-neutral-900 border border-neutral-700 focus:ring-2 focus:ring-purple-500 outline-none text-white placeholder-neutral-500"
+          />
+        </div>
+
+        {/* Saved Places */}
+        <div className="space-y-3">
+          <p className="text-xs text-neutral-400 uppercase tracking-wider">
+            Saved Places
+          </p>
+
+          {savedPlaces.map((data) => (
+            <div
+              key={data.id}
+              onClick={() => setDestinationLocation(data.address)}
+              className="flex justify-between items-center px-5 py-4 rounded-xl bg-neutral-900 hover:bg-neutral-700 cursor-pointer transition border border-neutral-700"
+            >
+              <p className="text-white font-medium">{data.type}</p>
+              <span className="text-xs text-neutral-400">Tap to select</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <button className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-600 text-white font-bold shadow-lg hover:opacity-90 transition">
           Start Ride
         </button>
+
       </div>
+
       <SavedLocations
         changeDestinationFlag={true}
         setDestinationLocation={setDestinationLocation}
       />
+
     </div>
   );
 };

@@ -7,10 +7,9 @@ import Home from "./screen/Home";
 const App = () =>{
     return(
         <Routes>
-            Canteen Ordering System
-            <Route path="/" element = {<Home />} />
-            <Route path="/restaurant" element = {<RestaurantDetails />} />
-            <Route path ="/cart" element = {<Cart />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+            <Route path="/cart" element={<Cart />} />
         </Routes>
     )
 }

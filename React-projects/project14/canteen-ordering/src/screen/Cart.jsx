@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addItemsInCart, deleteItemsInCart } from "../Store/app";
+import { addItemsInCart, deleteItemsInCart, removeItemFromCart } from "../Store/app";
+import { dummyImage } from "../components/RestaurantCard";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.app.cartData);
 
-  const totalAmount =
-   cartData?.reduce((acc, rest) => {
+  const totalAmount = cartData?.reduce((acc, rest) => {
     const resTotal = rest.menuItems.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0
@@ -16,12 +16,26 @@ const Cart = () => {
     return acc + resTotal;
   }, 0);
 
+  // Fallback image helpers
+  const fallbackUri = useMemo(() => {
+    const idx = Math.floor(Math.random() * (dummyImage.length - 1));
+    return dummyImage[idx];
+  }, []);
+
+  const onImgError = (e) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = fallbackUri;
+  };
+
   function handleAddItem(resId, itemId) {
     dispatch(addItemsInCart({ resId: resId, item_id: itemId }));
   }
   function handleDeleteItem(resId, itemId) {
     console.log("handleDeleteItem")
     dispatch(deleteItemsInCart({ resId: resId, item_id: itemId }));
+  }
+  function handleRemoveItem(resId, itemId) {
+    dispatch(removeItemFromCart({ resId, item_id: itemId }));
   }
   return (
     <div className="min-h-screen bg-gray-50">
@@ -74,8 +88,9 @@ const Cart = () => {
                 <div className="flex gap-3 p-4 border-b">
                   <img
                     src={restaurant.restaurantDetails.image_url}
+                    onError={onImgError}
                     className="w-20 h-20 object-cover rounded-lg"
-                    alt=""
+                    alt="Restaurant"
                   />
                   <div>
                     <h2 className="text-lg font-bold text-gray-800">
@@ -100,8 +115,9 @@ const Cart = () => {
                       <div className="flex gap-3">
                         <img
                           src={item.image}
+                          onError={onImgError}
                           className="w-16 h-16 rounded-lg object-cover"
-                          alt=""
+                          alt={item.name}
                         />
                         <div>
                           <h3 className="font-semibold text-gray-800">
@@ -143,6 +159,12 @@ const Cart = () => {
                         <p className="font-bold text-gray-800">
                           ₹{(item.price * item.quantity).toFixed(2)}
                         </p>
+                        <button
+                          onClick={() => handleRemoveItem(restaurant.id, item.item_id)}
+                          className="ml-2 text-red-600 hover:text-red-700 text-sm font-medium"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   ))}

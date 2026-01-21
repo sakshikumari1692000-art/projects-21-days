@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { useGetResaturantData } from "../Hook";
+import { useGetRestaurantData } from "../Hook";
 import { dummyImage } from "../components/RestaurantCard";
-import { addItemsInCart } from "../Store/app";
+import { addItemsInCart, deleteItemsInCart } from "../Store/app";
 
 const RestaurantDetails = () => {
   const dispatch = useDispatch();
-  useGetResaturantData();
+  useGetRestaurantData();
   const { id } = useParams();
 
   const allRestaurantData = useSelector((state) => state.app.restaurantData);
-  
+  const cartData = useSelector((state) => state.app.cartData);
+
   const restaurantData = allRestaurantData.find((data) => data.id === id);
 
   const [imageUri, setImageUri] = useState(restaurantData?.image_url ?? "");
@@ -23,6 +24,17 @@ const RestaurantDetails = () => {
 
   function handleClick(itemId) {
     dispatch(addItemsInCart({ resId: id, item_id: itemId }));
+  }
+
+  function handleDecrement(itemId) {
+    dispatch(deleteItemsInCart({ resId: id, item_id: itemId }));
+  }
+
+  function getItemQty(itemId) {
+    const resCart = cartData.find((c) => c.id === id);
+    if (!resCart) return 0;
+    const it = resCart.menuItems.find((m) => m.item_id === itemId);
+    return it?.quantity ?? 0;
   }
 
   if (!restaurantData)
@@ -111,14 +123,34 @@ const RestaurantDetails = () => {
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      handleClick(item.item_id);
-                    }}
-                    className="self-start mt-2 bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg transition-all duration-300"
-                  >
-                    Add to Cart
-                  </button>
+                  {getItemQty(item.item_id) === 0 ? (
+                    <button
+                      onClick={() => handleClick(item.item_id)}
+                      className="self-start mt-2 bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-lg transition-all duration-300"
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <div className="self-start mt-2 flex items-center gap-3">
+                      <button
+                        onClick={() => handleDecrement(item.item_id)}
+                        className="w-8 h-8 flex items-center justify-center rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50"
+                        aria-label="decrement"
+                      >
+                        −
+                      </button>
+                      <span className="min-w-[2ch] text-center font-semibold text-gray-800">
+                        {getItemQty(item.item_id)}
+                      </span>
+                      <button
+                        onClick={() => handleClick(item.item_id)}
+                        className="w-8 h-8 flex items-center justify-center rounded-full bg-orange-500 text-white hover:bg-orange-600"
+                        aria-label="increment"
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -64,16 +64,37 @@ export const appSlice = createSlice({
         (obj) => obj.item_id === item_id
       );
 
-      if (resDataIncart.menuItems[itemIndex].quantity == 1) {
-        state.cartData[resDataIncartIndex].menuItems.splice(itemIndex, 1);
+      if (resDataIncart.menuItems[itemIndex].quantity === 1) {
+        resDataIncart.menuItems.splice(itemIndex, 1);
       } else {
-        state.cartData[resDataIncartIndex].menuItems[itemIndex].quantity -= 1;
+        resDataIncart.menuItems[itemIndex].quantity -= 1;
+      }
+
+      // Remove restaurant group if no items left
+      if (resDataIncart.menuItems.length === 0) {
+        state.cartData.splice(resDataIncartIndex, 1);
+      }
+    },
+    removeItemFromCart: (state, action) => {
+      const { resId, item_id } = action.payload;
+      const resDataIncartIndex = state.cartData.findIndex(
+        (obj) => obj.id === resId
+      );
+      if (resDataIncartIndex === -1) return;
+      const resDataIncart = state.cartData[resDataIncartIndex];
+      const itemIndex = resDataIncart.menuItems.findIndex(
+        (obj) => obj.item_id === item_id
+      );
+      if (itemIndex === -1) return;
+      resDataIncart.menuItems.splice(itemIndex, 1);
+      if (resDataIncart.menuItems.length === 0) {
+        state.cartData.splice(resDataIncartIndex, 1);
       }
     },
   },
 });
 
-export const { setRestaurantData, addItemsInCart, deleteItemsInCart } =
+export const { setRestaurantData, addItemsInCart, deleteItemsInCart, removeItemFromCart } =
   appSlice.actions;
 
 export default appSlice.reducer;

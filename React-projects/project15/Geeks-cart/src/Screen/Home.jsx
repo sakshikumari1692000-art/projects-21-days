@@ -1,10 +1,12 @@
 import React from "react";
+import CourseGrid from "../Components/CourseGrid";
 
-const Home =  () =>{
-    return(
-        <div>
-            <h1>Home Page</h1>
-        </div>
-    )
-}
-export default Home ;
+const Home = () => {
+  return (
+    <div>
+      <CourseGrid />
+    </div>
+  );
+};
+
+export default Home;

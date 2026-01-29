@@ -10,7 +10,7 @@ export function useFetchCourseData() {
     if (courseData.length !== 0) return;
     console.log("api called");
     let apiData = await fetch(
-      `https://mocki.io/v1/be0822f2-200f-41ea-b333-aa465c3bb8e7`
+      `https://mocki.io/v1/f49bc9b4-f9a5-4171-915c-d05f7b800cf0`
     );
     let jsonData = await apiData.json();
     dispatch(setCoursedata(jsonData));

@@ -1,0 +1,683 @@
+[
+  {
+    "id": 1,
+    "title": "Complete React Native Bootcamp",
+    "instructor": "Sarah Jenkins",
+    "price": 49.99,
+    "rating": 4.8,
+    "image": "https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png",
+    "category": "Mobile Development",
+    "bestseller": true,
+    "description": "Master React Native in 2024. Build iOS and Android apps from scratch using a single codebase. Includes Expo, Navigation, and Redux.",
+    "studentsEnrolled": 15400,
+    "lastUpdated": "2024-11-15",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Build native mobile apps with React Native",
+      "Master the latest React Hooks and Context API",
+      "Implement complex navigation with React Navigation",
+      "State management with Redux Toolkit",
+      "Publishing to Apple App Store and Google Play"
+    ],
+    "prerequisites": [
+      "Basic JavaScript knowledge",
+      "React basics recommended"
+    ],
+    "reviews": [
+      {
+        "user": "Michael T.",
+        "rating": 5,
+        "comment": "Sarah is an amazing instructor. The section on deployment saved me hours of headache.",
+        "date": "2024-12-01"
+      },
+      {
+        "user": "Jessica L.",
+        "rating": 4.5,
+        "comment": "Great course, but the section on animations could be a bit deeper. Otherwise perfect.",
+        "date": "2024-11-20"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Advanced CSS and Sass: Flexbox, Grid, Animations",
+    "instructor": "Jonas Schmedtmann",
+    "price": 39.99,
+    "rating": 4.9,
+    "image": "https://img-c.udemycdn.com/course/750x422/1026604_790b_2.jpg",
+    "category": "Web Design",
+    "bestseller": false,
+    "description": "The most advanced and modern CSS course on the internet: master flexbox, CSS Grid, responsive design, and so much more.",
+    "studentsEnrolled": 8200,
+    "lastUpdated": "2024-08-10",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Advanced CSS animations with @keyframes, transitions and transforms",
+      "CSS architecture: component-based design, BEM, writing reusable code",
+      "Sass: variables, mixins, functions",
+      "Flexbox layouts and CSS Grid",
+      "Responsive design strategies"
+    ],
+    "prerequisites": [
+      "Basic HTML and CSS knowledge"
+    ],
+    "reviews": [
+      {
+        "user": "David B.",
+        "rating": 5,
+        "comment": "This changed how I write CSS forever. The BEM methodology section is gold.",
+        "date": "2024-10-15"
+      },
+      {
+        "user": "Anna K.",
+        "rating": 5,
+        "comment": "Finally understood Grid layout thanks to Jonas.",
+        "date": "2024-09-28"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Python for Data Science and Machine Learning",
+    "instructor": "Jose Portilla",
+    "price": 59.99,
+    "rating": 4.7,
+    "image": "https://img-c.udemycdn.com/course/750x422/903744_8eb2.jpg",
+    "category": "Data Science",
+    "bestseller": true,
+    "description": "Learn how to use NumPy, Pandas, Seaborn, Matplotlib, Plotly, Scikit-Learn, Machine Learning, Tensorflow, and more!",
+    "studentsEnrolled": 21000,
+    "lastUpdated": "2024-12-05",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Use Python for Data Science and Machine Learning",
+      "Implement Machine Learning Algorithms",
+      "Learn to use NumPy for Numerical Data",
+      "Use Pandas for Data Analysis",
+      "Data Visualization with Matplotlib and Seaborn"
+    ],
+    "prerequisites": [
+      "Basic math skills",
+      "No programming experience required"
+    ],
+    "reviews": [
+      {
+        "user": "Chris P.",
+        "rating": 4,
+        "comment": "Very comprehensive. Some of the library versions need updating in the videos.",
+        "date": "2024-11-12"
+      },
+      {
+        "user": "Sarah M.",
+        "rating": 5,
+        "comment": "Excellent introduction to the data science stack.",
+        "date": "2024-12-10"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "The Complete JavaScript Course 2024",
+    "instructor": "Maximilian Schwarzmüller",
+    "price": 29.99,
+    "rating": 4.8,
+    "image": "https://img-c.udemycdn.com/course/750x422/851712_fc61_6.jpg",
+    "category": "Web Development",
+    "bestseller": true,
+    "description": "The modern JavaScript course for everyone! Master JavaScript with projects, challenges and theory. Many courses in one!",
+    "studentsEnrolled": 35000,
+    "lastUpdated": "2024-11-28",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Modern JavaScript from scratch",
+      "Asynchronous JavaScript: Promises, async/await, AJAX",
+      "Modern OOP: Classes, constructors, prototypal inheritance",
+      "Event loop and how the engine works",
+      "Modern tooling: Webpack, Babel, parcel"
+    ],
+    "prerequisites": [
+      "No coding experience necessary"
+    ],
+    "reviews": [
+      {
+        "user": "Tom H.",
+        "rating": 5,
+        "comment": "Max explains the 'why' not just the 'how'. Best JS course out there.",
+        "date": "2024-12-02"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Design Masterclass",
+    "instructor": "Gary Simon",
+    "price": 44.99,
+    "rating": 4.6,
+    "image": "https://img-c.udemycdn.com/course/750x422/4556488_7322_2.jpg",
+    "category": "Design",
+    "bestseller": false,
+    "description": "Learn to design beautiful interfaces and user experiences. Covers Figma, prototyping, wireframing, and design theory.",
+    "studentsEnrolled": 5600,
+    "lastUpdated": "2024-09-15",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Master Figma for UI Design",
+      "Create high-fidelity prototypes",
+      "Understand typography, color theory, and layout",
+      "Mobile-first design principles",
+      "Conducting user research"
+    ],
+    "prerequisites": [
+      "No design experience needed"
+    ],
+    "reviews": [
+      {
+        "user": "Emily R.",
+        "rating": 5,
+        "comment": "I'm a developer and this helped me improve my design skills significantly.",
+        "date": "2024-10-05"
+      },
+      {
+        "user": "Mark D.",
+        "rating": 4,
+        "comment": "Great content, but wished for more Adobe XD examples.",
+        "date": "2024-09-22"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Docker & Kubernetes: The Practical Guide",
+    "instructor": "Stephen Grider",
+    "price": 54.99,
+    "rating": 4.8,
+    "image": "https://img-c.udemycdn.com/course/750x422/1793828_7999.jpg",
+    "category": "DevOps",
+    "bestseller": false,
+    "description": "Build, test, and deploy Docker applications with Kubernetes while learning production-style development workflows.",
+    "studentsEnrolled": 12300,
+    "lastUpdated": "2024-10-30",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Learn Docker from scratch",
+      "Multi-container architecture",
+      "Deploying to AWS Elastic Beanstalk",
+      "Kubernetes production workflows",
+      "CI/CD pipelines"
+    ],
+    "prerequisites": [
+      "Basic terminal usage",
+      "Basic web development knowledge"
+    ],
+    "reviews": [
+      {
+        "user": "Raj P.",
+        "rating": 5,
+        "comment": "Complex topics made simple. The diagrams really help.",
+        "date": "2024-11-15"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Mastering Redux Toolkit",
+    "instructor": "Dave Gray",
+    "price": 24.99,
+    "rating": 4.9,
+    "image": "https://i.ytimg.com/vi/9zq7v9s6s6s/maxresdefault.jpg",
+    "category": "Web Development",
+    "bestseller": true,
+    "description": "Stop struggling with state management. Learn Redux Toolkit, RTK Query, and advanced state patterns in React.",
+    "studentsEnrolled": 9500,
+    "lastUpdated": "2024-12-12",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Redux Toolkit Fundamentals",
+      "RTK Query for data fetching",
+      "Optimistic UI updates",
+      "Middleware and thunks",
+      "Integrating with TypeScript"
+    ],
+    "prerequisites": [
+      "Good understanding of React"
+    ],
+    "reviews": [
+      {
+        "user": "Sophie W.",
+        "rating": 5,
+        "comment": "RTK Query changed my life. Thanks Dave!",
+        "date": "2024-12-18"
+      },
+      {
+        "user": "Ken J.",
+        "rating": 4.8,
+        "comment": "Short, sweet, and to the point. No fluff.",
+        "date": "2024-12-14"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Ethical Hacking: Beginner to Advanced",
+    "instructor": "Heath Adams",
+    "price": 69.99,
+    "rating": 4.7,
+    "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/Ethical_Hacking_Course.jpg",
+    "category": "Cybersecurity",
+    "bestseller": false,
+    "description": "Learn ethical hacking, penetration testing, and network security skills. Hands-on labs with Kali Linux.",
+    "studentsEnrolled": 18000,
+    "lastUpdated": "2024-11-05",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Network scanning and enumeration",
+      "Vulnerability analysis",
+      "Exploitation with Metasploit",
+      "Wireless network attacks",
+      "Web application penetration testing"
+    ],
+    "prerequisites": [
+      "Basic IT skills",
+      "Understanding of networks is a plus"
+    ],
+    "reviews": [
+      {
+        "user": "Anon123",
+        "rating": 5,
+        "comment": "Practical and hands-on. The labs are great.",
+        "date": "2024-11-20"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Flutter & Dart - The Complete Guide",
+    "instructor": "Academind",
+    "price": 34.99,
+    "rating": 4.7,
+    "image": "https://img-c.udemycdn.com/course/750x422/1708340_7108_5.jpg",
+    "category": "Mobile Development",
+    "bestseller": true,
+    "description": "A Complete Guide to the Flutter SDK & Flutter Framework for building native iOS and Android apps.",
+    "studentsEnrolled": 24000,
+    "lastUpdated": "2024-10-12",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Dart programming language basics to advanced",
+      "Building beautiful UIs with Widgets",
+      "State management with Provider and Riverpod",
+      "Handling user input and forms",
+      "Connecting to native device features"
+    ],
+    "prerequisites": [
+      "Basic programming knowledge"
+    ],
+    "reviews": [
+      {
+        "user": "Liam N.",
+        "rating": 4.5,
+        "comment": "Good course, but very long. Takes dedication.",
+        "date": "2024-11-01"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "SQL - The Complete Analyst Bootcamp",
+    "instructor": "Maven Analytics",
+    "price": 19.99,
+    "rating": 4.6,
+    "image": "https://img-c.udemycdn.com/course/750x422/2120666_d701.jpg",
+    "category": "Data Analytics",
+    "bestseller": false,
+    "description": "Master SQL for Data Analysis. Learn MySQL and Database Design. Great for business intelligence aspirants.",
+    "studentsEnrolled": 6700,
+    "lastUpdated": "2024-09-30",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Write complex SQL queries",
+      "Database design and normalization",
+      "Joins, Unions, and Subqueries",
+      "Window functions for analytics",
+      "Stored procedures and triggers"
+    ],
+    "prerequisites": [
+      "No prior experience required"
+    ],
+    "reviews": [
+      {
+        "user": "Karen S.",
+        "rating": 5,
+        "comment": "Perfect for beginners. Maven Analytics always delivers quality.",
+        "date": "2024-10-18"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Rust Programming: The Complete Developer's Guide",
+    "instructor": "Zero To Mastery",
+    "price": 49.99,
+    "rating": 4.8,
+    "image": "https://img-c.udemycdn.com/course/750x422/2327120_1879_3.jpg",
+    "category": "System Programming",
+    "bestseller": false,
+    "description": "Learn Rust from scratch! Master the best modern systems programming language and build real-world applications.",
+    "studentsEnrolled": 4500,
+    "lastUpdated": "2024-11-25",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Rust ownership and borrowing system",
+      "Memory management and safety",
+      "Concurrency in Rust",
+      "Error handling patterns",
+      "Building a CLI tool"
+    ],
+    "prerequisites": [
+      "Experience with C/C++ or another systems language helpful"
+    ],
+    "reviews": [
+      {
+        "user": "DevGuy99",
+        "rating": 5,
+        "comment": "Hardest language to learn, but this course made it clickable.",
+        "date": "2024-12-05"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Adobe Illustrator CC - Essentials Training",
+    "instructor": "Daniel Scott",
+    "price": 29.99,
+    "rating": 4.9,
+    "image": "https://img-c.udemycdn.com/course/750x422/1046722_cbd7_2.jpg",
+    "category": "Design",
+    "bestseller": true,
+    "description": "Learn Adobe Illustrator CC graphic design, logo design, and more with this in-depth, practical course.",
+    "studentsEnrolled": 32000,
+    "lastUpdated": "2024-07-20",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Designing logos and branding packages",
+      "Creating vector illustrations",
+      "Mastering the Pen tool",
+      "Typography and layout",
+      "Exporting for print and web"
+    ],
+    "prerequisites": [
+      "Adobe Illustrator installed"
+    ],
+    "reviews": [
+      {
+        "user": "ArtistJane",
+        "rating": 5,
+        "comment": "Dan is the best teacher. Funny and informative.",
+        "date": "2024-08-15"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "AWS Certified Solutions Architect Associate",
+    "instructor": "Stephane Maarek",
+    "price": 59.99,
+    "rating": 4.9,
+    "image": "https://img-c.udemycdn.com/course/750x422/2196488_8fc7_10.jpg",
+    "category": "Cloud Computing",
+    "bestseller": true,
+    "description": "Ultimate AWS Certified Solutions Architect Associate (SAA-C03) exam prep. Hands-on labs and practice exams.",
+    "studentsEnrolled": 45000,
+    "lastUpdated": "2024-12-15",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Pass the AWS Certified Solutions Architect Associate Exam",
+      "Design highly available and scalable systems",
+      "Master S3, EC2, RDS, Lambda, and DynamoDB",
+      "AWS Security best practices (IAM, KMS)",
+      "VPC networking deep dive"
+    ],
+    "prerequisites": [
+      "Basic IT knowledge"
+    ],
+    "reviews": [
+      {
+        "user": "CloudEng",
+        "rating": 5,
+        "comment": "Passed my exam with a score of 920 thanks to this.",
+        "date": "2024-12-20"
+      },
+      {
+        "user": "Sam W.",
+        "rating": 5,
+        "comment": "Stephane is the king of AWS courses.",
+        "date": "2024-12-10"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "C++: From Beginner to Expert",
+    "instructor": "John Purcell",
+    "price": 24.99,
+    "rating": 4.5,
+    "image": "https://img-c.udemycdn.com/course/750x422/1576854_9aeb.jpg",
+    "category": "Software Engineering",
+    "bestseller": false,
+    "description": "Designed for people who don't have any knowledge about the programming and want to program in C++.",
+    "studentsEnrolled": 8900,
+    "lastUpdated": "2024-06-10",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Pointer arithmetic and memory management",
+      "Object Oriented Programming in C++",
+      "STL (Standard Template Library)",
+      "File I/O",
+      "Advanced C++11/14/17 features"
+    ],
+    "prerequisites": [
+      "Logical thinking",
+      "A computer"
+    ],
+    "reviews": [
+      {
+        "user": "OldSchoolDev",
+        "rating": 4,
+        "comment": "Solid foundation, but audio quality could be better in early videos.",
+        "date": "2024-09-01"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Machine Learning A-Z: Python & R in Data Science",
+    "instructor": "Kirill Eremenko",
+    "price": 79.99,
+    "rating": 4.6,
+    "image": "https://img-c.udemycdn.com/course/750x422/950390_270f_3.jpg",
+    "category": "Data Science",
+    "bestseller": true,
+    "description": "Learn to create Machine Learning Algorithms in Python and R from two Data Science experts.",
+    "studentsEnrolled": 55000,
+    "lastUpdated": "2024-11-10",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Master Machine Learning on Python & R",
+      "Make robust Machine Learning models",
+      "Data Preprocessing",
+      "Reinforcement Learning",
+      "Natural Language Processing (NLP)"
+    ],
+    "prerequisites": [
+      "High school math level"
+    ],
+    "reviews": [
+      {
+        "user": "DataFan",
+        "rating": 5,
+        "comment": "The intuition videos are brilliant.",
+        "date": "2024-11-25"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Modern TypeScript: The Complete Guide",
+    "instructor": "Net Ninja",
+    "price": 19.99,
+    "rating": 4.8,
+    "image": "https://img-c.udemycdn.com/course/750x422/1251344_52d3_6.jpg",
+    "category": "Web Development",
+    "bestseller": false,
+    "description": "Master TypeScript by learning how to configure it, using it with the DOM and React, and understanding advanced types.",
+    "studentsEnrolled": 7800,
+    "lastUpdated": "2024-10-22",
+    "language": "English",
+    "whatYouWillLearn": [
+      "TypeScript compiler configuration",
+      "Interfaces vs Types",
+      "Generics and Enums",
+      "TypeScript with React",
+      "Modules and Namespaces"
+    ],
+    "prerequisites": [
+      "JavaScript ES6+"
+    ],
+    "reviews": [
+      {
+        "user": "FrontendDev",
+        "rating": 5,
+        "comment": "Shaun (Net Ninja) is a legend. Clear and concise.",
+        "date": "2024-11-30"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Unreal Engine 5 C++ Developer: Learn C++ & Make Games",
+    "instructor": "GameDev.tv",
+    "price": 44.99,
+    "rating": 4.7,
+    "image": "https://img-c.udemycdn.com/course/750x422/1086882_e587.jpg",
+    "category": "Game Development",
+    "bestseller": true,
+    "description": "Create video games using Unreal Engine 5 and C++. The ultimate game developer course for beginners.",
+    "studentsEnrolled": 14000,
+    "lastUpdated": "2024-12-08",
+    "language": "English",
+    "whatYouWillLearn": [
+      "C++ fundamentals for game dev",
+      "Unreal Engine 5 Interface",
+      "Physics and collisions",
+      "AI Behavior Trees",
+      "Sound effects and particle systems"
+    ],
+    "prerequisites": [
+      "Capable PC for UE5"
+    ],
+    "reviews": [
+      {
+        "user": "GamerOne",
+        "rating": 4.5,
+        "comment": "Great introduction to UE5. Some bugs in the later sections but support is good.",
+        "date": "2024-12-15"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Excel Essentials: The Complete Excel Series",
+    "instructor": "Alan Jarvis",
+    "price": 14.99,
+    "rating": 4.5,
+    "image": "https://img-c.udemycdn.com/course/750x422/355222_691a_4.jpg",
+    "category": "Productivity",
+    "bestseller": false,
+    "description": "Learn Excel from beginner to advanced. Formulas, Pivot Tables, Macros, and VBA.",
+    "studentsEnrolled": 11000,
+    "lastUpdated": "2024-05-15",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Master Excel formulas (VLOOKUP, INDEX/MATCH)",
+      "Create dynamic reports with Pivot Tables",
+      "Automate tasks with Macros and VBA",
+      "Data visualization with charts",
+      "Data cleaning techniques"
+    ],
+    "prerequisites": [
+      "Microsoft Excel installed"
+    ],
+    "reviews": [
+      {
+        "user": "OfficeWorker",
+        "rating": 4.5,
+        "comment": "Very practical examples.",
+        "date": "2024-08-20"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "The Ultimate Go (Golang) Programming Course",
+    "instructor": "Trevor Sawler",
+    "price": 39.99,
+    "rating": 4.8,
+    "image": "https://img-c.udemycdn.com/course/750x422/2630560_05c0_4.jpg",
+    "category": "Backend Development",
+    "bestseller": false,
+    "description": "Master Go (Golang) syntax, structures, and concurrency. Build fast, scalable backend systems.",
+    "studentsEnrolled": 6200,
+    "lastUpdated": "2024-11-18",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Go Syntax and Data Structures",
+      "Goroutines and Channels (Concurrency)",
+      "Building Web Servers",
+      "Working with JSON and Databases",
+      "Testing in Go"
+    ],
+    "prerequisites": [
+      "Basic backend knowledge recommended"
+    ],
+    "reviews": [
+      {
+        "user": "BackEndPro",
+        "rating": 5,
+        "comment": "Go is the future. This course covers everything needed to get hired.",
+        "date": "2024-12-10"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Digital Marketing Masterclass: Get Your First 1,000 Customers",
+    "instructor": "Phil Ebiner",
+    "price": 29.99,
+    "rating": 4.4,
+    "image": "https://img-c.udemycdn.com/course/750x422/1270870_8e92_13.jpg",
+    "category": "Marketing",
+    "bestseller": true,
+    "description": "Grow your business with Social Media Marketing, Content Marketing, Email Marketing, and SEO.",
+    "studentsEnrolled": 28000,
+    "lastUpdated": "2024-09-05",
+    "language": "English",
+    "whatYouWillLearn": [
+      "Social Media Strategy",
+      "SEO Fundamentals",
+      "Email Marketing Campaigns",
+      "Google Analytics",
+      "Copywriting basics"
+    ],
+    "prerequisites": [
+      "A business or product to market"
+    ],
+    "reviews": [
+      {
+        "user": "BizOwner",
+        "rating": 4,
+        "comment": "Good overview, a bit generic on some topics but good for beginners.",
+        "date": "2024-10-12"
+      }
+    ]
+  }
+]
